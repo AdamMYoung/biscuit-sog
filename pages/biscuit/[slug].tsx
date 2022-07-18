@@ -1,0 +1,100 @@
+import type { GetStaticPaths, GetStaticProps, NextPage } from 'next';
+import Image from 'next/image';
+import { useEffect, useState } from 'react';
+import { Biscuit, getContentfulRepositry } from '../../src/utils/contentful';
+
+type Props = {
+    biscuit: Biscuit;
+};
+
+const Biscuit: NextPage<Props> = ({ biscuit }) => {
+    const [isDunking, setIsDunk] = useState(false);
+    const [isHidden, setIsHidden] = useState(false);
+    const [isInfoVisible, setIsInfoVisible] = useState(false);
+
+    useEffect(() => {
+        if (isDunking) {
+            setTimeout(() => {
+                setIsHidden(true);
+            }, 3000);
+        }
+    }, [isDunking]);
+
+    useEffect(() => {
+        if (isHidden) {
+            setTimeout(() => setIsInfoVisible(true), 500);
+        }
+    }, [isHidden]);
+
+    return (
+        <div className="text-center grid gap-8">
+            <div className="grid gap-4">
+                <h1 className="text-3xl font-semibold">{biscuit.name}</h1>
+                <div>
+                    <button
+                        disabled={isDunking}
+                        onClick={() => setIsDunk(true)}
+                        className="border px-8 py-2 text-xl rounded-lg transition-all hover:bg-white hover:text-black active:bg-slate-200 disabled:cursor-auto disabled:text-gray-500 disabled:bg-slate-200"
+                    >
+                        Dunk
+                    </button>
+                </div>
+            </div>
+            <div
+                className={`transition-all duration-300 ${
+                    isHidden ? 'pointer-events-none opacity-0' : 'opacity-100 pointer-events-auto'
+                } ${isInfoVisible && 'h-0'}`}
+            >
+                <div className={`p-4 transition-all ${isDunking && 'dunk'}`}>
+                    <Image width="250" height="150" alt={biscuit.name} src={biscuit.pictureURL} />
+                </div>
+                <div className="mt-16 z-10">
+                    <Image width="500" height="300" alt="Tea Cup" src="/tea-cup.png" />
+                </div>
+            </div>
+            <div
+                className={`transition-all duration-300 ${
+                    isInfoVisible ? 'pointer-events-auto opacity-100' : 'opacity-0 pointer-events-none'
+                }`}
+            >
+                <div className="grid gap-4 text-xl">
+                    <p>Our expert scientists have deduced that a {biscuit.name} takes...</p>
+                    <p className="text-5xl font-bold">{biscuit.duration} seconds</p>
+                    <p className="max-w-3xl mx-auto">
+                        before they get too <sup>soggy</sup> in your tea, and you get those horrible bits at the bottom,
+                        you know?
+                    </p>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export const getStaticPaths: GetStaticPaths = async () => {
+    const repository = getContentfulRepositry();
+    const biscuits = await repository.getBiscuits();
+
+    const paths = biscuits.map((b) => ({ params: { slug: b.slug } }));
+
+    return {
+        paths,
+        fallback: false,
+    };
+};
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+    if (!params) {
+        return { notFound: true };
+    }
+
+    const repository = getContentfulRepositry();
+    const biscuit = await repository.getBiscuit(params.slug as string);
+
+    return {
+        props: {
+            biscuit,
+        },
+    };
+};
+
+export default Biscuit;
