@@ -51,7 +51,10 @@ const Biscuit: NextPage<Props> = ({ biscuit }) => {
                     isHidden ? 'pointer-events-none opacity-0' : 'opacity-100 pointer-events-auto'
                 } ${isInfoVisible && 'h-0'}`}
             >
-                <div className={`p-4 relative z-20 transition-all ${isDunking && 'dunk'}`}>
+                <div
+                    style={{ width: 250 }}
+                    className={`p-4 relative z-20 mx-auto transition-all ${isDunking && 'dunk'}`}
+                >
                     <Image width="250" height="150" alt={biscuit.name} src={biscuit.pictureURL} />
                 </div>
                 <div style={{ width: '500px' }} className="mt-16 mx-auto">
