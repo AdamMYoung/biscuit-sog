@@ -57,7 +57,7 @@ const Biscuit: NextPage<Props> = ({ biscuit }) => {
                 >
                     <Image width="250" height="150" alt={biscuit.name} src={biscuit.pictureURL} />
                 </div>
-                <div style={{ width: '500px' }} className="mt-16 mx-auto">
+                <div style={{ maxWidth: '500px' }} className="mt-16 mx-auto px-2">
                     <div className="relative">
                         <div className="relative z-10">
                             <Image width="500" height="300" alt="Tea Cup" src="/tea-cup-back.png" />
