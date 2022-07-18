@@ -1,5 +1,6 @@
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { Biscuit, getContentfulRepositry } from '../../src/utils/contentful';
 
@@ -29,7 +30,12 @@ const Biscuit: NextPage<Props> = ({ biscuit }) => {
     return (
         <div className="text-center grid gap-8">
             <div className="grid gap-4">
-                <h1 className="text-3xl font-semibold">{biscuit.name}</h1>
+                <div>
+                    <Link passHref href="/">
+                        <a className="underline">{'< Back'}</a>
+                    </Link>
+                    <h1 className="text-3xl font-semibold">{biscuit.name}</h1>
+                </div>
                 <div>
                     <button
                         disabled={isDunking}
