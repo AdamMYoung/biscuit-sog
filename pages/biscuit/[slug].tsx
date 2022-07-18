@@ -59,7 +59,7 @@ const Biscuit: NextPage<Props> = ({ biscuit }) => {
                 </div>
             </div>
             <div
-                className={`transition-all duration-300 ${
+                className={`px-2 transition-all duration-300 ${
                     isInfoVisible ? 'pointer-events-auto opacity-100' : 'opacity-0 pointer-events-none'
                 }`}
             >

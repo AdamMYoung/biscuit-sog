@@ -23,7 +23,7 @@ const Home: NextPage<Props> = ({ biscuits }) => {
                     />
                 </div>
             </div>
-            <div className="grid grid-cols-3 mt-16">
+            <div className="grid grid-cols-2 md:grid-cols-3 mt-16">
                 {biscuits
                     .filter((b) => b.name.includes(searchTerm))
                     .map((b) => (
