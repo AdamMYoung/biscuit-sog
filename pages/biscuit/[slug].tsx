@@ -46,42 +46,45 @@ const Biscuit: NextPage<Props> = ({ biscuit }) => {
                     </button>
                 </div>
             </div>
-            <div
-                className={`transition-all duration-300 ${
-                    isHidden ? 'pointer-events-none opacity-0' : 'opacity-100 pointer-events-auto'
-                } ${isInfoVisible && 'h-0'}`}
-            >
+
+            <div className="relative ">
                 <div
-                    style={{ width: 250 }}
-                    className={`p-4 relative z-20 mx-auto transition-all ${isDunking && 'dunk'}`}
+                    className={`absolute left-0 right-0 transition-all duration-300 ${
+                        isHidden ? 'pointer-events-none opacity-0' : 'pointer-events-auto opacity-100 '
+                    } ${isInfoVisible && 'h-0'}`}
                 >
-                    <Image width="250" height="150" alt={biscuit.name} src={biscuit.pictureURL} />
-                </div>
-                <div style={{ maxWidth: '500px' }} className="mt-16 mx-auto px-2">
-                    <div className="relative">
-                        <div className="relative z-10">
-                            <Image width="500" height="300" alt="Tea Cup" src="/tea-cup-back.png" />
-                        </div>
-                        <div className="absolute top-0">
-                            <div className="z-30 relative">
-                                <Image width="500" height="300" alt="Tea Cup" src="/tea-cup-front.png" />
+                    <div
+                        style={{ width: 250 }}
+                        className={`p-4 relative z-20 mx-auto transition-all ${isDunking && 'dunk'}`}
+                    >
+                        <Image width="250" height="150" alt={biscuit.name} src={biscuit.pictureURL} />
+                    </div>
+                    <div style={{ maxWidth: '500px' }} className="mt-16 mx-auto px-2">
+                        <div className="relative">
+                            <div className="relative z-10">
+                                <Image width="500" height="300" alt="Tea Cup" src="/tea-cup-back.png" />
+                            </div>
+                            <div className="absolute top-0">
+                                <div className="z-30 relative">
+                                    <Image width="500" height="300" alt="Tea Cup" src="/tea-cup-front.png" />
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div
-                className={`px-2 transition-all duration-300 ${
-                    isInfoVisible ? 'pointer-events-auto opacity-100' : 'opacity-0 pointer-events-none'
-                }`}
-            >
-                <div className="grid gap-4 text-xl">
-                    <p>Our expert scientists have deduced that a {biscuit.name} takes...</p>
-                    <p className="text-5xl font-bold">{biscuit.duration} seconds</p>
-                    <p className="max-w-3xl mx-auto">
-                        before they get too <sup>soggy</sup> in your tea, and you get those horrible bits at the bottom,
-                        you know?
-                    </p>
+                <div
+                    className={`absolute left-0 right-0 px-2 transition-all duration-300 ${
+                        isInfoVisible ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0 '
+                    }`}
+                >
+                    <div className="grid gap-4 text-xl">
+                        <p>Our expert scientists have deduced that a {biscuit.name} takes...</p>
+                        <p className="text-5xl font-bold">{biscuit.duration} seconds</p>
+                        <p className="max-w-3xl mx-auto">
+                            before they get too <sup>soggy</sup> in your tea, and you get those horrible bits at the
+                            bottom, you know?
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
