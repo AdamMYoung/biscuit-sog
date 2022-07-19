@@ -5,6 +5,9 @@ import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import { Biscuit, getContentfulRepositry } from '../../src/utils/contentful';
 
+import front from '../../public/tea-cup-front.png';
+import back from '../../public/tea-cup-back.png';
+
 type Props = {
     biscuit: Biscuit;
 };
@@ -31,7 +34,7 @@ const Biscuit: NextPage<Props> = ({ biscuit }) => {
     return (
         <div className="text-center grid gap-8">
             <Head>
-                <title>{biscuit.name} - The Biscuit Sog Index</title>
+                <title>{`${biscuit.name} - The Biscuit Sog Index`}</title>
             </Head>
             <div className="grid gap-4">
                 <h1 className="text-center font-semibold text-5xl">{biscuit.name}</h1>
@@ -66,11 +69,11 @@ const Biscuit: NextPage<Props> = ({ biscuit }) => {
                     <div style={{ maxWidth: '500px' }} className="mt-16 mx-auto px-2">
                         <div className="relative">
                             <div className="relative z-10">
-                                <Image width="500" height="300" alt="Tea Cup" src="/tea-cup-back.png" />
+                                <Image width="500" height="300" alt="Tea Cup" src={back} placeholder="blur" />
                             </div>
                             <div className="absolute top-0">
                                 <div className="z-30 relative">
-                                    <Image width="500" height="300" alt="Tea Cup" src="/tea-cup-front.png" />
+                                    <Image width="500" height="300" alt="Tea Cup" src={front} placeholder="blur" />
                                 </div>
                             </div>
                         </div>
