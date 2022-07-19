@@ -1,7 +1,8 @@
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next';
+import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Biscuit, getContentfulRepositry } from '../../src/utils/contentful';
 
 type Props = {
@@ -29,25 +30,28 @@ const Biscuit: NextPage<Props> = ({ biscuit }) => {
 
     return (
         <div className="text-center grid gap-8">
+            <Head>
+                <title>{biscuit.name} - The Biscuit Sog Index</title>
+            </Head>
             <div className="grid gap-4">
+                <h1 className="text-center font-semibold text-5xl">{biscuit.name}</h1>
                 <div>
                     <Link passHref href="/">
                         <a className="underline">{'< Back'}</a>
                     </Link>
-                    <h1 className="text-3xl font-semibold">{biscuit.name}</h1>
-                </div>
-                <div>
-                    <button
-                        disabled={isDunking}
-                        onClick={() => setIsDunk(true)}
-                        className="border px-8 py-2 text-xl rounded-lg transition-all hover:bg-white hover:text-black active:bg-slate-200 disabled:cursor-auto disabled:text-gray-500 disabled:bg-slate-200"
-                    >
-                        Dunk
-                    </button>
                 </div>
             </div>
+            <div>
+                <button
+                    disabled={isDunking}
+                    onClick={() => setIsDunk(true)}
+                    className="border px-8 py-2 text-xl rounded-lg transition-all hover:bg-white hover:text-black active:bg-slate-200 disabled:cursor-auto disabled:text-gray-500 disabled:bg-slate-200"
+                >
+                    Dunk
+                </button>
+            </div>
 
-            <div className="relative ">
+            <div className="relative">
                 <div
                     className={`absolute left-0 right-0 transition-all duration-300 ${
                         isHidden ? 'pointer-events-none opacity-0' : 'pointer-events-auto opacity-100 '

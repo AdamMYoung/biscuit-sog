@@ -1,4 +1,5 @@
 import type { GetStaticProps, NextPage } from 'next';
+import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
@@ -12,7 +13,11 @@ const Home: NextPage<Props> = ({ biscuits }) => {
     const [searchTerm, setSearchTerm] = useState('');
 
     return (
-        <div>
+        <div className="grid gap-16">
+            <Head>
+                <title>The Biscuit Sog Index</title>
+            </Head>
+            <h1 className="text-center font-semibold text-5xl">The Biscuit Sog Index</h1>
             <div className="grid gap-1 text-center mx-auto font-semibold">
                 <p>The Biscuit Finder</p>
                 <div>
@@ -23,7 +28,7 @@ const Home: NextPage<Props> = ({ biscuits }) => {
                     />
                 </div>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-16">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
                 {biscuits
                     .filter((b) => b.name.includes(searchTerm))
                     .map((b) => (
