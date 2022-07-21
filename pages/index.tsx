@@ -2,6 +2,7 @@ import type { GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
+import Script from 'next/script';
 import { useState } from 'react';
 import { Biscuit, getContentfulRepositry } from '../src/utils/contentful';
 
@@ -17,7 +18,21 @@ const Home: NextPage<Props> = ({ biscuits }) => {
             <Head>
                 <title>The Biscuit Sog Index</title>
             </Head>
-            <h1 className="text-center font-semibold text-5xl">The Biscuit Sog Index</h1>
+            <div className="grid gap-4">
+                <h1 className="text-center font-semibold text-5xl">The Biscuit Sog Index</h1>
+                <div className="align-middle mx-auto">
+                    <ins
+                        className="adsbygoogle"
+                        style={{ display: 'inline-block', width: 'auto', height: '90px' }}
+                        data-ad-client="ca-pub-9732665435466396"
+                        data-ad-slot="4130274861"
+                    ></ins>
+                    <Script
+                        id="title-ad"
+                        dangerouslySetInnerHTML={{ __html: '(adsbygoogle = window.adsbygoogle || []).push({});' }}
+                    />
+                </div>
+            </div>
             <div className="grid gap-1 text-center mx-auto font-semibold">
                 <p>The Biscuit Finder</p>
                 <div>

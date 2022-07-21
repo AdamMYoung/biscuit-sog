@@ -7,6 +7,7 @@ import { Biscuit, getContentfulRepositry } from '../../src/utils/contentful';
 
 import front from '../../public/tea-cup-front.png';
 import back from '../../public/tea-cup-back.png';
+import Script from 'next/script';
 
 type Props = {
     biscuit: Biscuit;
@@ -19,6 +20,8 @@ const Biscuit: NextPage<Props> = ({ biscuit }) => {
 
     useEffect(() => {
         if (isDunking) {
+            new Audio('/water-sounds.mp3').play();
+
             setTimeout(() => {
                 setIsHidden(true);
             }, 3000);
@@ -43,7 +46,20 @@ const Biscuit: NextPage<Props> = ({ biscuit }) => {
                         <a className="underline">{'< Back'}</a>
                     </Link>
                 </div>
+                <div className="align-middle mx-auto">
+                    <ins
+                        className="adsbygoogle"
+                        style={{ display: 'inline-block', width: 'auto', height: '90px' }}
+                        data-ad-client="ca-pub-9732665435466396"
+                        data-ad-slot="4130274861"
+                    ></ins>
+                    <Script
+                        id="biscuit-title-ad"
+                        dangerouslySetInnerHTML={{ __html: '(adsbygoogle = window.adsbygoogle || []).push({});' }}
+                    />
+                </div>
             </div>
+
             <div>
                 <button
                     disabled={isDunking}
