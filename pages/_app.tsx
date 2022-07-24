@@ -10,7 +10,7 @@ function MyApp({ Component, pageProps }: AppProps) {
                 <Component {...pageProps} />
             </main>
             <div className="flex-grow" />
-            <p className="mx-auto pb-2">
+            <p className="mx-auto pb-2" style={{ paddingTop: 500 }}>
                 Made by{' '}
                 <a className="underline" href="https://aydev.uk" target="_blank" rel="noreferrer">
                     Adam Young

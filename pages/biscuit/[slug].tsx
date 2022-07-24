@@ -72,7 +72,7 @@ const Biscuit: NextPage<Props> = ({ biscuit }) => {
 
             <div className="relative">
                 <div
-                    className={`absolute left-0 right-0 transition-all duration-300 ${
+                    className={`absolute  left-0 right-0 transition-all duration-300 ${
                         isHidden ? 'pointer-events-none opacity-0' : 'pointer-events-auto opacity-100 '
                     } ${isInfoVisible && 'h-0'}`}
                 >
@@ -82,7 +82,7 @@ const Biscuit: NextPage<Props> = ({ biscuit }) => {
                     >
                         <Image width="250" height="150" alt={biscuit.name} src={biscuit.pictureURL} />
                     </div>
-                    <div style={{ maxWidth: '500px', height: 300 }} className="mt-16 mx-auto">
+                    <div style={{ maxWidth: '500px' }} className="mt-16 mx-auto">
                         <div className="relative">
                             <div className="relative z-10">
                                 <Image width="500" height="300" alt="Tea Cup" src={back} placeholder="blur" />
